@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainRelative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <CheckBox
+                            android:id="@+id/sausage_check1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sausage_radio"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="sausage_check1"
+                            android:text="Add pepper" />
+
+                        <CheckBox
+                            android:id="@+id/sausage_check2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sausage_check1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="sausage_check2"
+                            android:text="More Cheeeeese! " />
+
+                        <ImageView
+                            android:id="@+id/sausage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="250dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/garlic_sausage" />
+
+                        <LinearLayout
+                            android:id="@+id/sausage_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/sausage"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sausage_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="5"
+                                android:text="Sausage"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/sausage_pricetag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="$5"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/sausage_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="0 pcs"
+                                android:textSize="30sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/sausage_divider"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/sausage_minus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="minusSausage"
+                                android:text="-"
+                                android:textSize="24sp" />
+
+                            <Button
+                                android:id="@+id/sausage_plus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="addSausage"
+                                android:text="+"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <RadioGroup
+                            android:id="@+id/sausage_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sausage_description"
+                            android:layout_marginTop="4dp">
+
+                            <RadioButton
+                                android:id="@+id/sausage_radio1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:text="Cut into pieces" />
+
+                            <RadioButton
+                                android:id="@+id/sausage_radio2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:checked="true"
+                                android:text="Do not cut" />
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/sausage_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sausage_price"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:text="Delicious garlic sausages"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:id="@+id/sausage_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/sausage_check2"
+                            android:background="?android:attr/listDivider" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <CheckBox
+                            android:id="@+id/lasagna_check1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lasagna_radio"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="lasagna_check1"
+                            android:text="More Cheeeeese! " />
+
+                        <CheckBox
+                            android:id="@+id/lasagna_check2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lasagna_check1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="lasagna_check2"
+                            android:text="Add pepper" />
+
+                        <ImageView
+                            android:id="@+id/lasagna"
+                            android:layout_width="wrap_content"
+                            android:layout_height="250dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/lasagna" />
+
+                        <LinearLayout
+                            android:id="@+id/lasagna_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/lasagna"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/lasagna_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="5"
+                                android:text="Lasagna"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/lasagna_pricetag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="$15"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/lasagna_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="0 pcs"
+                                android:textSize="30sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/lasagna_divider"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/lasagna_minus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="minusLasagna"
+                                android:text="-"
+                                android:textSize="24sp" />
+
+                            <Button
+                                android:id="@+id/lasagna_plus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="addLasagna"
+                                android:text="+"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <RadioGroup
+                            android:id="@+id/lasagna_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lasagna_description"
+                            android:layout_marginTop="4dp">
+
+                            <RadioButton
+                                android:id="@+id/lasagna_radio1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:text="Cut into pieces" />
+
+                            <RadioButton
+                                android:id="@+id/lasagna_radio2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:checked="true"
+                                android:text="Do not cut" />
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/lasagna_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lasagna_price"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:text="Delicious lasagna made by PewDiePie \n(。・∀・)ノ"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:id="@+id/lasagna_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/lasagna_check2"
+                            android:background="?android:attr/listDivider" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <CheckBox
+                            android:id="@+id/pizza_check1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pizza_radio"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="pizza_check1"
+                            android:text="More Cheeeeese! " />
+
+                        <CheckBox
+                            android:id="@+id/pizza_check2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pizza_check1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:onClick="pizza_check2"
+                            android:text="Double pepperoni" />
+
+                        <ImageView
+                            android:id="@+id/pizza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="250dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/pizza" />
+
+                        <LinearLayout
+                            android:id="@+id/pizza_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/pizza"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/pizza_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="5"
+                                android:text="Pizza"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/pizza_pricetag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="$20"
+                                android:textColor="#000000"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/pizza_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="0 pcs"
+                                android:textSize="30sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/pizza_divider"
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/pizza_minus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="minusPizza"
+                                android:text="-"
+                                android:textSize="24sp" />
+
+                            <Button
+                                android:id="@+id/pizza_plus"
+                                style="@style/Widget.AppCompat.Button.Borderless"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="addPizza"
+                                android:text="+"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <RadioGroup
+                            android:id="@+id/pizza_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pizza_description"
+                            android:layout_marginTop="4dp">
+
+                            <RadioButton
+                                android:id="@+id/pizza_radio1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:checked="true"
+                                android:text="Spicy" />
+
+                            <RadioButton
+                                android:id="@+id/pizza_radio2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:text="Not spicy" />
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/pizza_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pizza_price"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="0dp"
+                            android:text="Pizza filled with pepperoni! "
+                            android:textSize="18sp" />
+
+                        <View
+                            android:id="@+id/pizza_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/pizza_check2"
+                            android:background="?android:attr/listDivider" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:text="Total: $0"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scroll"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:contentDescription="Sum it up"
+        app:srcCompat="@drawable/baseline_receipt_white_18dp" />
+
+</RelativeLayout>
