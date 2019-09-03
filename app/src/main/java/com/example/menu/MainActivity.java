@@ -2,6 +2,8 @@ package com.example.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,12 +54,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void jumpToBill()
+    {
+        Intent intent = new Intent(this, Bill.class);
+
+        // Check if we're running on Android 5.0 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Apply activity transition
+            startActivity(intent);
+        } else {
+            // Swap without transition
+            startActivity(intent);
+        }
+    }
+
     public void createEventListeners()
     {
         FloatingActionButton fab = findViewById(R.id.floatingActionButton2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                jumpToBill();
                 Toast.makeText(getApplicationContext(), "Order received! \nYou need to pay: $" + getTotalPrice(), Toast.LENGTH_LONG).show();
             }
         });
