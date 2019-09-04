@@ -2,6 +2,7 @@ package com.example.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Food> foodList;
+    public static ArrayList<Food> foodList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +59,12 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, Bill.class);
 
-        // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        // Check if we're running on Android 6.0 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // Apply activity transition
-            startActivity(intent);
+            ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(findViewById(R.id.floatingActionButton2), 0, 0, 0, 0);
+            Bundle optsBundle = opts.toBundle();
+            startActivity(intent, optsBundle);
         } else {
             // Swap without transition
             startActivity(intent);
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 jumpToBill();
-                Toast.makeText(getApplicationContext(), "Order received! \nYou need to pay: $" + getTotalPrice(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Order received! \nYou need to pay: $" + getTotalPrice(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -391,5 +394,19 @@ class Food
                 break;
             }
         }
+    }
+
+    public String toString()
+    {
+        String foodInfo = "";
+        foodInfo += name + "\t";
+        foodInfo += amount + " * $" + amount + " = $" + this.getTotalPrice() + "\n";
+        foodInfo += "\t" + radioOption + "\n";
+        for (String special:specialRequirements)
+        {
+            foodInfo += "\t" + special + "\n";
+        }
+        foodInfo += "\n";
+        return foodInfo;
     }
 }
