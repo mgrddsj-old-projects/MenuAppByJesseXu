@@ -2,7 +2,9 @@ package com.example.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Bill extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class Bill extends AppCompatActivity {
                 billString += MainActivity.foodList.get(i);
             }
         }
-//        billString += "Total price = $" + getTotalPrice();
+        billString += "Total price = $" + getTotalPrice();
         return billString;
     }
 
@@ -37,9 +39,12 @@ public class Bill extends AppCompatActivity {
         {
             totalPrice += MainActivity.foodList.get(i).getTotalPrice();
         }
-
-        TextView priceDisplay = (TextView)findViewById(R.id.total_price);
-        priceDisplay.setText("Total: $" + totalPrice);
         return totalPrice;
+    }
+
+    public void pay(View view)
+    {
+        Intent intent = new Intent(this, Payment.class);
+        startActivity(intent);
     }
 }

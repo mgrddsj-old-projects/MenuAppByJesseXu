@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // Check if we're running on Android 6.0 or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // Apply activity transition
-            ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(findViewById(R.id.floatingActionButton2), 0, 0, 0, 0);
+            ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(findViewById(R.id.floatingActionButton2), 0, 0, 1, 1);
             Bundle optsBundle = opts.toBundle();
             startActivity(intent, optsBundle);
         } else {
@@ -401,10 +401,10 @@ class Food
         String foodInfo = "";
         foodInfo += name + "\t";
         foodInfo += amount + " * $" + amount + " = $" + this.getTotalPrice() + "\n";
-        foodInfo += "\t" + radioOption + "\n";
+        foodInfo += "\t-" + radioOption + "\n";
         for (String special:specialRequirements)
         {
-            foodInfo += "\t" + special + "\n";
+            foodInfo += "\t-" + special + "\n";
         }
         foodInfo += "\n";
         return foodInfo;
