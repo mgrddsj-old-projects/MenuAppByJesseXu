@@ -63,6 +63,18 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pay"
+        android:layout_marginBottom="0dp"
+        android:background="@color/design_default_color_primary_dark"
+        android:onClick="send"
+        android:text="Send bill via Email"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
+
+    <Button
         android:id="@+id/pay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
