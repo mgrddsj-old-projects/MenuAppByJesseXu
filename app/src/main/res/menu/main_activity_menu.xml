@@ -8,4 +8,14 @@
         android:title="Reset"
         android:visible="true"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/navigate"
+        android:icon="@drawable/ic_navigate"
+        android:title="Navigate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/call"
+        android:icon="@drawable/ic_call"
+        android:title="Call"
+        app:showAsAction="ifRoom" />
 </menu>

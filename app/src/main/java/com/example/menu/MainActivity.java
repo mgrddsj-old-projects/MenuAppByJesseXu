@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,6 +52,27 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.reset) {
             // do something here
             reset();
+        }
+        else if (id == R.id.navigate)
+        {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+
+            //将功能Scheme以URI的方式传入data
+            Uri uri = Uri.parse("androidamap://viewMap?sourceApplication=com.example.menu&poiname=广州贝赛思国际学校&lat=23.168041&lon=113.440126&dev=0");
+            intent.setData(uri);
+
+            //启动该页面即可
+            startActivity(intent);
+        }
+        else if (id == R.id.call)
+        {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:10086"));
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
