@@ -74,6 +74,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+        else if (id == R.id.music)
+        {
+            Intent intent = new Intent(this, MusicPlayer.class);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
+        else if (id == R.id.google_maps)
+        {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = Uri.parse("geo:23.1680832,113.439761?q=Guangzhou Yinhu Residence Hotel");
+            intent.setData(uri);
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 

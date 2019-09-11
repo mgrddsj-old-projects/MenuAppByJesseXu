@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.TextView;
 
@@ -58,6 +59,17 @@ public class Bill extends AppCompatActivity {
 
         if (intent.resolveActivity(getPackageManager()) != null)
         {
+            startActivity(intent);
+        }
+    }
+
+    public void addToCalendar(View view)
+    {
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.TITLE, "Order")
+                .putExtra(CalendarContract.Events.DESCRIPTION, getBillString());
+        if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
     }

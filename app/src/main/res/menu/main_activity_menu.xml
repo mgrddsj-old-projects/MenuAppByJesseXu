@@ -18,4 +18,13 @@
         android:icon="@drawable/ic_call"
         android:title="Call"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/music"
+        android:icon="@drawable/ic_music"
+        android:title="Play some music"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/google_maps"
+        android:icon="@drawable/ic_maps"
+        android:title="Open with Google Maps" />
 </menu>
