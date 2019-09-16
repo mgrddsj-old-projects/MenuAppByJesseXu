@@ -6,15 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MusicPlayer">
 
-    <Button
-        android:id="@+id/play"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentRight="false"
+        android:layout_above="@id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="false"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:text="Play! " />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/play"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/ic_play_black"
+            android:onClick="play" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:background="@drawable/ic_pause_black"
+            android:onClick="pause" />
+
+        <Button
+            android:id="@+id/skip"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:background="@drawable/ic_skip_black"
+            android:onClick="skip" />
+    </LinearLayout>
 </RelativeLayout>
