@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MusicPlayer extends AppCompatActivity
 {
-public MediaPlayer player;
+public static MediaPlayer player;
 public ArrayList<Integer> songList;
 public int songNum;
 public SeekBar seekBar;
@@ -33,8 +33,9 @@ public Runnable runnable;
 
         songNum = 0;
         songList = new ArrayList<>();
-        songList.add(R.raw.ames_fluid);
+        songList.add(R.raw.in_time);
         songList.add(R.raw.undertale_hotel);
+        songList.add(R.raw.ames_fluid);
 
         player = MediaPlayer.create(getApplicationContext(), songList.get(songNum));
         seekBar = findViewById(R.id.seekBar);
