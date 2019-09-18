@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,14 +22,23 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Food> foodList;
+    public static MediaPlayer player;
+//    public static MediaPlayer backgroundMusic;
+    private boolean spaghettiTtsRead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Music related
+        spaghettiTtsRead = false;
+//        backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.in_time);
+//        backgroundMusic.start();
 
         foodList = new ArrayList<>();
         foodList.add(new Food("Sausage", 5, "Do not cut"));
@@ -42,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         if (MusicPlayer.player != null) MusicPlayer.player.release();
+        if (player != null) player.release();
+//        if (backgroundMusic != null) player.release();
     }
 
     @Override
@@ -359,6 +371,51 @@ public class MainActivity extends AppCompatActivity {
         {
             foodList.get(findFood("Pizza")).removeSpecialRequirement("Double pepperoni");
         }
+    }
+
+    public void playSound(View view)
+    {
+//        backgroundMusic.pause();
+
+        if (player != null)
+        {
+            player.release();
+        }
+
+        if (view == findViewById(R.id.sausage))
+        {
+            player = MediaPlayer.create(getApplicationContext(), R.raw.sausage_tts);
+        }
+        else if (view == findViewById(R.id.lasagna))
+        {
+            Random random = new Random();
+            if (random.nextInt(2) == 0)
+            {
+                player = MediaPlayer.create(getApplicationContext(), R.raw.lasagna_tts);
+            }
+            else
+            {
+                player = MediaPlayer.create(getApplicationContext(), R.raw.lasagna);
+            }
+        }
+        else if (view == findViewById(R.id.pizza))
+        {
+            player = MediaPlayer.create(getApplicationContext(), R.raw.pizza_tts);
+        }
+        else if (view == findViewById(R.id.spaghetti))
+        {
+            if (!spaghettiTtsRead)
+            {
+                player = MediaPlayer.create(getApplicationContext(), R.raw.spaghetti_tts);
+                spaghettiTtsRead = true;
+            }
+            else
+            {
+                player = MediaPlayer.create(getApplicationContext(), R.raw.bonetrousle);
+            }
+        }
+        player.start();
+
     }
 }
 
