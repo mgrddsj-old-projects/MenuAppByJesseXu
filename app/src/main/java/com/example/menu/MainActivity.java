@@ -27,7 +27,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Food> foodList;
     public static MediaPlayer player;
-//    public static MediaPlayer backgroundMusic;
+    public static MediaPlayer backgroundMusic;
+    private boolean lasagnaTTsRead;
     private boolean spaghettiTtsRead;
 
     @Override
@@ -36,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Music related
+        lasagnaTTsRead = false;
         spaghettiTtsRead = false;
-//        backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.in_time);
-//        backgroundMusic.start();
+        backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.paradise);
+        backgroundMusic.start();
 
         foodList = new ArrayList<>();
         foodList.add(new Food("Sausage", 5, "Do not cut"));
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         if (MusicPlayer.player != null) MusicPlayer.player.release();
         if (player != null) player.release();
-//        if (backgroundMusic != null) player.release();
+        if (backgroundMusic != null) player.release();
     }
 
     @Override
@@ -388,14 +390,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (view == findViewById(R.id.lasagna))
         {
-            Random random = new Random();
-            if (random.nextInt(2) == 0)
+            if (!lasagnaTTsRead)
             {
                 player = MediaPlayer.create(getApplicationContext(), R.raw.lasagna_tts);
+                lasagnaTTsRead = true;
             }
             else
             {
                 player = MediaPlayer.create(getApplicationContext(), R.raw.lasagna);
+                lasagnaTTsRead = false;
             }
         }
         else if (view == findViewById(R.id.pizza))
@@ -412,10 +415,20 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 player = MediaPlayer.create(getApplicationContext(), R.raw.bonetrousle);
+                spaghettiTtsRead = false;
             }
         }
-        player.start();
-
+        if (player != null)
+        {
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    backgroundMusic.start();
+                }
+            });
+            backgroundMusic.pause();
+            player.start();
+        }
     }
 }
 
